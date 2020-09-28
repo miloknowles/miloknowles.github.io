@@ -11,7 +11,7 @@ class ContactCard extends Component {
       <Container className="DarkBackground" fluid>
         <Container className="pt-5 pb-5" id="contact">
           {/* mx-auto centers stuff! */}
-          <Card className="bg-light mx-auto text-center" style={{ width: '40rem' }}>
+          <Card className="bg-light mx-auto text-center">
             <Card.Header className="FontColorBlack">CONTACT ME</Card.Header>
               <Card.Body>
                 <Card.Link href="mknowles@mit.edu" target="_blank">mknowles@mit.edu</Card.Link>
@@ -28,3 +28,5 @@ class ContactCard extends Component {
 }
 
 export default ContactCard;
+
+// style={{ width: '40rem' }}

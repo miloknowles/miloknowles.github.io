@@ -8,7 +8,7 @@ h1, h2, h3, h4, h5, h6, p {
 body {
   font-family: 'Roboto Mono', 'monospace';
   font-weight: 400;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 30px;
   color: #000;
   -webkit-font-smoothing: antialiased;
@@ -32,10 +32,13 @@ code {
 }
 
 .FontColorDarkBlue {
-  /* color: #73a4ff */
   color: rgb(0, 50, 210);
 }
 
 .FontColorMediumGray {
   color: #616161
+}
+
+.ProjectTitleText {
+  font-size: 16px;
 }

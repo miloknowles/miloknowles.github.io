@@ -37,7 +37,7 @@ class ProjectList extends Component {
               </ProjectCard>
               <ProjectCard
                 image={'/images/ldl.png'}
-                title={'6.881 Project: A Lagrange Dual Learning Framework For Solving Constrained Inverse Kinematics Tasks'}
+                title={'6.881 Project: Solving Constrained Inverse Kinematics Tasks with NNs'}
                 description={<p><i>Inverse-kinematics</i> (IK) is the task of finding a set of joint angles for a robotic arm that would place its "end-effector" (hand)
                             at a desired pose. This is a difficult nonlinear and nonconvex optimization problem, especially when there are constraints such as
                             joint limits or obstacles that must be avoided. I wanted to see if a neural network can learn approximate solutions to constrained IK

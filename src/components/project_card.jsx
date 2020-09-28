@@ -22,9 +22,9 @@ class ProjectCard extends Component {
           <Card.Img variant="top" src={this.props.image} bg="primary" fluid/>
           <Card.Body>
             <Card.Title>
-              <Accordion.Toggle as={Button} variant="link" eventKey="0"><small>[ READ MORE ]</small></Accordion.Toggle>
-              <b>{this.props.title}</b>
-              <small className="text-muted"> // {this.props.date}</small>
+                <Accordion.Toggle as={Button} variant="link" eventKey="0"><small>[ READ MORE ]</small></Accordion.Toggle>
+                <b className="ProjectTitleText">{this.props.title}</b>
+                <small className="text-muted"> // {this.props.date}</small>
             </Card.Title>
             <Accordion.Collapse eventKey="0">
             <Card.Body>

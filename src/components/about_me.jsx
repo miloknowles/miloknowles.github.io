@@ -12,12 +12,12 @@ class AboutMe extends Component {
         <Container className="pt-5" id="about"></Container>
         <Container className="pt-5 pb-5">
           <Row>
-            <Col xs={12} md={5} className="my-auto">
+            <Col xs={12} md={4} className="my-auto">
               {/* Fluid image auto-resizes to fit inside of its container */}
               <Image src="/images/me.jpeg" rounded fluid></Image>
             </Col>
-            <Col xs={12} md={7} className="my-auto">
-              <h1 class="mt-2 FontColorDarkBlue">MILO KNOWLES</h1>
+            <Col xs={12} md={8} className="my-auto">
+              <h2 class="mt-2 FontColorDarkBlue">MILO KNOWLES</h2>
               <h5 class="mt-2 FontColorBlack">
                 I received my B.S and M.Eng from MIT, where I focused on robotics, computer vision,
                 and AI.
