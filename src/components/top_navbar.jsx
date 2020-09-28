@@ -8,19 +8,19 @@ class TopNavbar extends Component {
   render() {
     return (
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light" sticky="top">
-        <Navbar.Brand href="#about" className="FontStyleCode">// Milo Knowles</Navbar.Brand>
+        <Navbar.Brand href="/" className="FontStyleCode">// MILO KNOWLES</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/#about" className="FontStyleCode">About Me</Nav.Link>
-            <Nav.Link href="/#projects" className="FontStyleCode">Projects</Nav.Link>
-            <Nav.Link href="/#contact" className="FontStyleCode">Contact</Nav.Link>
+            <Nav.Link href="/#about" className="FontStyleCode">ABOUT</Nav.Link>
+            <Nav.Link href="/#projects" className="FontStyleCode">PROJECTS</Nav.Link>
+            <Nav.Link href="/#contact" className="FontStyleCode">CONTACT</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="/images/resume.pdf">Resume</Nav.Link>
-            <Nav.Link href="https://www.linkedin.com/in/milo-knowles">Linkedin</Nav.Link>
-            <Nav.Link href="https://github.com/miloknowles" className="FontStyleCode">GitHub</Nav.Link>
-            <Nav.Link href="https://www.strava.com/athletes/6914634">Strava</Nav.Link>
+            <Nav.Link href="/images/resume.pdf">RESUME</Nav.Link>
+            <Nav.Link href="https://www.linkedin.com/in/milo-knowles">LINKEDIN</Nav.Link>
+            <Nav.Link href="https://github.com/miloknowles" className="FontStyleCode">GITHUB</Nav.Link>
+            <Nav.Link href="https://www.strava.com/athletes/6914634">STRAVA</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

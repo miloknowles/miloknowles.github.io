@@ -32,7 +32,8 @@ code {
 }
 
 .FontColorDarkBlue {
-  color: #73a4ff
+  /* color: #73a4ff */
+  color: rgb(0, 50, 210);
 }
 
 .FontColorMediumGray {

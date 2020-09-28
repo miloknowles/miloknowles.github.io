@@ -1,7 +1,15 @@
 .DarkBackground {
-  background: #434345
+  background: rgb(229, 238, 255);
 }
 
 .LightBackground {
   background: white;
+}
+
+.TaitLightBackground {
+  background: rgb(229, 238, 255);
+}
+
+.TaitDarkBackground {
+  background: rgb(0, 50, 210);
 }
