@@ -1,0 +1,42 @@
+/* @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700,800'); */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 15px;
+  font-weight: 400;
+  line-height: 1.4em;
+}
+
+body {
+  font-family: 'Roboto Mono', 'monospace';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.FontStyleCode {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.FontColorBlack {
+  color: #000000
+}
+
+.FontColorWhite {
+  color: #FFFFFF
+}
+
+.FontColorDarkBlue {
+  color: #73a4ff
+}
+
+.FontColorMediumGray {
+  color: #616161
+}
