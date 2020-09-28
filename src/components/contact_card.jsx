@@ -16,7 +16,7 @@ class ContactCard extends Component {
             <ListGroup variant="flush">
               <ListGroup.Item>mknowles@mit.edu</ListGroup.Item>
               <Card.Body>
-                <Card.Link href="/pdfs/resume.pdf">Resume</Card.Link>
+                <Card.Link href="/images/resume.pdf">Resume</Card.Link>
                 <Card.Link href="https://www.linkedin.com/in/milo-knowles">Linkedin</Card.Link>
                 <Card.Link href="https://github.com/miloknowles">GitHub</Card.Link>
                 <Card.Link href="https://www.strava.com/athletes/6914634">Strava</Card.Link>

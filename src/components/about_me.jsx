@@ -17,15 +17,18 @@ class AboutMe extends Component {
             </Col>
             <Col xs={12} md={7} className="my-auto">
               <h1 class="mt-2 FontColorDarkBlue">Milo Knowles</h1>
-              <h4 class="mt-2 FontColorWhite">
+              <h5 class="mt-2 FontColorWhite">
                 I received my B.S and M.Eng from MIT, where I focused on robotics, computer vision,
-                and AI. I'm currently exploring applications of autonomous robots for sustainability
+                and AI.
+              </h5>
+              <h5 class="mt-2 FontColorDarkBlue">
+                I'm currently exploring applications of autonomous robots for sustainability
                 and climate change mitigation.
-              </h4>
-              <h4 class="mt-2 FontColorWhite">
-                When I'm not writing code, I enjoy running and biking around the Boston area,
+              </h5>
+              <h5 class="mt-2 FontColorWhite">
+                When I'm not writing code, I enjoy running and biking around Boston,
                 playing guitar, and trying to keep my hydroponic garden alive.
-              </h4>
+              </h5>
             </Col>
           </Row>
         </Container>
