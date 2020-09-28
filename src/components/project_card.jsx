@@ -8,7 +8,7 @@ import Accordion from 'react-bootstrap/Accordion';
 class CardLink extends Component {
   render() {
     return (
-      <Card.Link href={this.props.href}>{this.props.text}</Card.Link>
+      <Card.Link href={this.props.href} target="_blank">{this.props.text}</Card.Link>
     );
   }
 };

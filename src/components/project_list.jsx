@@ -4,9 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import { ProjectCard_Thesis,
-         ProjectCard_LDL,
-          ProjectCard, CardLink } from './project_card';
+import { ProjectCard, CardLink } from './project_card';
 
 
 class ProjectList extends Component {
@@ -52,6 +50,16 @@ class ProjectList extends Component {
                 date={'Spring, 2020'}
                 links={[<CardLink href="https://github.com/miloknowles/lagrange-dual-learning" text="Code"></CardLink>,
                         <CardLink href="https://github.com/miloknowles/lagrange-dual-learning/blob/master/report.pdf" text="Report"></CardLink>]}>
+              </ProjectCard>
+              <ProjectCard
+                image={'/images/skydio_3d_scan.png'}
+                title={'Summer Internship at Skydio'}
+                description={<p>I was part of a team that worked on Skydio's House/Structure scan capabilities. I spent most of my time working on mapping code
+                            that estimates the structure of a building from overhead images, and a frontend for overlaying aerial images
+                            on top of the structure.</p>}
+                date={'Summer, 2019'}
+                links={[<CardLink href="https://www.youtube.com/watch?v=MSy_06aOBzg" text="House Scan Video"></CardLink>,
+                        <CardLink href="https://www.youtube.com/watch?v=VxLXTeycyeE" text="Structure Scan Video"></CardLink>]}>
               </ProjectCard>
             </Col>
           </Row>
