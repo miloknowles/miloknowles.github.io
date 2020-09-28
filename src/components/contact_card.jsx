@@ -9,7 +9,8 @@ class ContactCard extends Component {
   render() {
     return (
       <Container className="DarkBackground" fluid>
-        <Container className="pt-5 pb-5">
+        {/* NOTE: The Navbar #contact targets this! */}
+        <Container className="pt-5 pb-5" id="contact">
           {/* mx-auto centers stuff! */}
           <Card className="bg-light mx-auto text-center" style={{ width: '30rem' }}>
             <Card.Header>Contact Me</Card.Header>

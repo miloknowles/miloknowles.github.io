@@ -12,7 +12,8 @@ class ProjectList extends Component {
   render() {
     return (
       <Container className="LightBackground" fluid>
-        <Container className="pt-5 pb-5">
+        {/* NOTE: The Navbar #projects targets this! */}
+        <Container className="pt-5 pb-5" id="projects">
           <Row>
             <Col xs={12} className="my-auto">
               <h1 className="FontColorDarkBlue">Projects</h1>

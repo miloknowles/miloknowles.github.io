@@ -8,8 +8,8 @@ import Image from 'react-bootstrap/Image';
 class AboutMe extends Component {
   render() {
     return (
-      <Container className="DarkBackground" fluid>
-        <Container className="pt-5 pb-5">
+      <Container className="DarkBackground"fluid>
+        <Container className="pt-5 pb-5" id="about">
           <Row>
             <Col xs={12} md={5} className="my-auto">
               {/* Fluid image auto-resizes to fit inside of its container */}

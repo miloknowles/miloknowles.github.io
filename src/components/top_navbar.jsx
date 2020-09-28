@@ -8,13 +8,13 @@ class TopNavbar extends Component {
   render() {
     return (
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light" sticky="top">
-        <Navbar.Brand href="#home" className="FontStyleCode">// Milo Knowles</Navbar.Brand>
+        <Navbar.Brand href="#about" className="FontStyleCode">// Milo Knowles</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#about" className="FontStyleCode">About Me</Nav.Link>
-            <Nav.Link href="#projects" className="FontStyleCode">Projects</Nav.Link>
-            <Nav.Link href="#contact" className="FontStyleCode">Contact</Nav.Link>
+            <Nav.Link href="/#about" className="FontStyleCode">About Me</Nav.Link>
+            <Nav.Link href="/#projects" className="FontStyleCode">Projects</Nav.Link>
+            <Nav.Link href="/#contact" className="FontStyleCode">Contact</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link href="/images/resume.pdf">Resume</Nav.Link>
