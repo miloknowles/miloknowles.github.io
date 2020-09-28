@@ -13,11 +13,11 @@ class ContactCard extends Component {
           <Card className="bg-light mx-auto text-center">
             <Card.Header className="FontColorBlack">CONTACT ME</Card.Header>
               <Card.Body>
-                <Card.Link href="mknowles@mit.edu" target="_blank">mknowles@mit.edu</Card.Link>
-                <Card.Link href="/images/resume.pdf" target="_blank">Resume</Card.Link>
-                <Card.Link href="https://www.linkedin.com/in/milo-knowles" target="_blank">Linkedin</Card.Link>
-                <Card.Link href="https://github.com/miloknowles" target="_blank">GitHub</Card.Link>
-                <Card.Link href="https://www.strava.com/athletes/6914634" target="_blank">Strava</Card.Link>
+                <Card.Link href="mknowles@mit.edu" target="_blank">MKNOWLES@MIT.EDU</Card.Link>
+                <Card.Link href="/images/resume.pdf" target="_blank">RESUME</Card.Link>
+                <Card.Link href="https://www.linkedin.com/in/milo-knowles" target="_blank">LINKEDIN</Card.Link>
+                <Card.Link href="https://github.com/miloknowles" target="_blank">GITHUB</Card.Link>
+                <Card.Link href="https://www.strava.com/athletes/6914634" target="_blank">STRAVA</Card.Link>
               </Card.Body>
           </Card>
         </Container>
