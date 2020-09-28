@@ -17,9 +17,12 @@ function App() {
   return (
     <div className="App">
       <TopNavbar></TopNavbar>
-      <div id="background-rrt-box">
+      <Container id="RRT-Container" className="LightBackground" fluid>
         <RRTAlgorithm></RRTAlgorithm>
-      </div>
+        <Container>
+          <p className="text-center align-middle FontColorDarkBlue">WELCOME TO MILO KNOWLES' PORTFOLIO</p>
+        </Container>
+      </Container>
       <AboutMe></AboutMe>
       <ProjectList></ProjectList>
       <ContactCard></ContactCard>

@@ -10,7 +10,7 @@ import { ProjectCard, CardLink } from './project_card';
 class ProjectList extends Component {
   render() {
     return (
-      <Container className="WhiteBackground" fluid>
+      <Container className="LightBackground" fluid>
         <Container className="pt-5" id="projects"></Container>
         <Container className="pt-5 pb-5">
           <Row>

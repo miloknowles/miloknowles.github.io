@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
 
 
 class ContactCard extends Component {
