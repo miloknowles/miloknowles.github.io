@@ -18,9 +18,9 @@ class TopNavbar extends Component {
           </Nav>
           <Nav>
             <Nav.Link href="/images/resume.pdf" target="_blank" >RESUME</Nav.Link>
-            <Nav.Link href="https://www.linkedin.com/in/milo-knowles" target="_blank" >LINKEDIN</Nav.Link>
+            {/* <Nav.Link href="https://www.linkedin.com/in/milo-knowles" target="_blank" >LINKEDIN</Nav.Link> */}
             <Nav.Link href="https://github.com/miloknowles" target="_blank" className="FontStyleCode">GITHUB</Nav.Link>
-            <Nav.Link href="https://www.strava.com/athletes/6914634" target="_blank" >STRAVA</Nav.Link>
+            {/* <Nav.Link href="https://www.strava.com/athletes/6914634" target="_blank" >STRAVA</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

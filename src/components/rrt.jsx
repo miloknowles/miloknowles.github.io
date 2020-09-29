@@ -145,7 +145,7 @@ class RRTAlgorithm extends Component {
     });
 
     // Set up a periodic callback to add the next RRT node.
-    this.interval = setInterval(this.expandRRT.bind(this), 50);
+    this.interval = setInterval(this.expandRRT.bind(this), 30);
 
     // Change nodes and edges when window changes size.
     window.addEventListener("resize", debounce(this.windowResizeCallback.bind(this), 250));

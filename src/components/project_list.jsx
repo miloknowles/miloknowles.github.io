@@ -15,7 +15,7 @@ class ProjectList extends Component {
         <Container className="pt-5 pb-5">
           <Row>
             <Col xs={12} className="my-auto">
-              <h1 className="FontColorDarkBlue">PROJECTS</h1>
+              <h4 className="FontColorDarkBlue">PROJECTS</h4>
               <ProjectCard
                 image={'/images/thesis/epistemic_example.png'}
                 title={"Master's Thesis"}

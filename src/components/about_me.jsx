@@ -17,14 +17,14 @@ class AboutMe extends Component {
               <Image src="/images/me.jpeg" className="" rounded fluid></Image>
             </Col>
             <Col xs={12} md={8} className="my-auto">
-              <h2 class="mt-2 FontColorDarkBlue">ABOUT ME</h2>
-              <p class="mt-2 FontColorDarkBlue">
+              <h4 className="mt-2 FontColorDarkBlue">ABOUT ME</h4>
+              {/* <p class="mt-2 FontColorDarkBlue">
                 I'M CURRENTLY EXPLORING APPLICATIONS OF AUTONOMOUS ROBOTS FOR SUSTAINABILITY AND CLIMATE CHANGE MITIGATION.
-              </p>
-              <p class="mt-2 FontColorBlack">
+              </p> */}
+              <p className="mt-2 FontColorBlack">
                 I RECEIVED MY B.S AND M.ENG FROM MIT, WHERE I FOCUSED ON ROBOTICS, COMPUTER VISION, AND AI.
               </p>
-              <p class="mt-2 FontColorBlack">
+              <p className="mt-2 FontColorDarkBlue">
                 WHEN I'M NOT WRITING CODE, I ENJOY RUNNING, BIKING, MUSIC, AND TRYING TO KEEP MY HYDROPONIC GARDEN ALIVE.
               </p>
             </Col>

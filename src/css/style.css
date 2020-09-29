@@ -13,3 +13,11 @@
 .TaitDarkBackground {
   background: rgb(0, 50, 210);
 }
+
+.card-body {
+  padding: 0.5rem;
+}
+
+.read-more-button {
+  padding: 0rem 0.4rem;
+}
