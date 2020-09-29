@@ -93,7 +93,7 @@ class RRTAlgorithm extends Component {
   addNewNodeRRT() {
     // Stopping condition to prevent clutter.
     if (this.state.nodes.length > 100) {
-      return;
+      clearInterval(this.interval);
     }
 
     var sample_point = this.sampleFreeSpace();

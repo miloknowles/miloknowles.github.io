@@ -5,15 +5,6 @@ import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 
 
-class CardLink extends Component {
-  render() {
-    return (
-      <Card.Link href={this.props.href} target="_blank">{this.props.text}</Card.Link>
-    );
-  }
-};
-
-
 class ProjectCard extends Component {
   render() {
     return (
@@ -42,4 +33,4 @@ class ProjectCard extends Component {
 }
 
 
-export { ProjectCard, CardLink };
+export default ProjectCard;
