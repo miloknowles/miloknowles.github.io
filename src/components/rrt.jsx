@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-var ALPHA = 0.9;
+var ALPHA = 0.5;
 
 
 /**
@@ -62,7 +62,7 @@ class RRTAlgorithm extends Component {
       edges: [],
       nn: [],
       width: 0,
-      height: 0
+      height: 0,
     };
   }
 
@@ -90,7 +90,7 @@ class RRTAlgorithm extends Component {
     return x;
   }
 
-  expandRRT() {
+  addNewNodeRRT() {
     // Stopping condition to prevent clutter.
     if (this.state.nodes.length > 100) {
       return;
@@ -145,7 +145,7 @@ class RRTAlgorithm extends Component {
     });
 
     // Set up a periodic callback to add the next RRT node.
-    this.interval = setInterval(this.expandRRT.bind(this), 30);
+    this.interval = setInterval(this.addNewNodeRRT.bind(this), 30);
 
     // Change nodes and edges when window changes size.
     window.addEventListener("resize", debounce(this.windowResizeCallback.bind(this), 250));
@@ -154,11 +154,17 @@ class RRTAlgorithm extends Component {
   updateWidthAndHeight() {
     // https://stackoverflow.com/questions/2474009/browser-size-width-and-height/2474211
     console.log(mobileCheck() ? "Detected mobile device" : "Detected non-mobile device");
-    const pageHeight = window.innerHeight || document.body.clientHeight;
 
+    // On mobile, RRT takes up the entire initial viewport. On desktop, only use a section.
+    const pageHeight = window.innerHeight || document.body.clientHeight;
+    const rrtBoxHeight = mobileCheck() ? pageHeight : 0.4 * pageHeight;
+
+    // Only update the height when the page loads (indicated by a zero initial value).
+    // This avoids the RRT box jumping in side when you scroll down on mobile and the toolsbars
+    // disappear, making the viewport height bigger.
     this.setState({
       width: window.innerWidth || document.body.clientWidth,
-      height: mobileCheck() ? pageHeight : 0.4 * pageHeight
+      height: (this.state.height <= 0) ? rrtBoxHeight : this.state.height
     });
   }
 
@@ -172,6 +178,7 @@ class RRTAlgorithm extends Component {
       stroke: "black", x1: edge[0][0], y1: edge[0][1], x2: edge[1][0], y2: edge[1][1],
       key: "edge " + edge[0][0].toString() + " " + edge[0][1].toString() + " " + edge[1][0].toString() + " " + edge[1][1].toString()
     }));
+
     return React.createElement("svg",
       { className: "RRT-SVG-BOX", width: this.state.width, height: this.state.height },
       rendered_nodes, rendered_edges

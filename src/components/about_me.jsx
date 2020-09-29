@@ -12,11 +12,12 @@ class AboutMe extends Component {
       <Container className="DarkBackground" id="about-container-fluid" fluid>
         <Container className="pt-5 pb-5" id="about">
           <Row>
+            <Col xs={0} md={1} className="my-auto"></Col>
             <Col xs={12} md={4} className="my-auto">
               {/* Fluid image auto-resizes to fit inside of its container */}
               <Image src="/images/me.jpeg" className="" rounded fluid></Image>
             </Col>
-            <Col xs={12} md={8} className="my-auto">
+            <Col xs={12} md={6} className="my-auto">
               <h4 className="mt-2 FontColorDarkBlue">ABOUT ME</h4>
               {/* <p class="mt-2 FontColorDarkBlue">
                 I'M CURRENTLY EXPLORING APPLICATIONS OF AUTONOMOUS ROBOTS FOR SUSTAINABILITY AND CLIMATE CHANGE MITIGATION.
@@ -28,6 +29,7 @@ class AboutMe extends Component {
                 WHEN I'M NOT WRITING CODE, I ENJOY RUNNING, BIKING, MUSIC, AND TRYING TO KEEP MY HYDROPONIC GARDEN ALIVE.
               </p>
             </Col>
+            <Col xs={0} md={1} className="my-auto"></Col>
           </Row>
         </Container>
       </Container>
