@@ -7,6 +7,9 @@ New and improved personal website
 # Install nodejs (also installs npm)
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
+
+# Project dependencies
+npm install gh-pages --save-dev
 ```
 
 # Deploying
