@@ -42,3 +42,8 @@ code {
 .ProjectTitleText {
   font-size: 14px;
 }
+
+.SectionHeadingText {
+  font-size: 20px;
+  font-weight: 800;
+}
