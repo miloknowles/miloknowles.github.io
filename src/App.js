@@ -8,7 +8,7 @@ import './css/text.css';
 import TopNavbar from './components/TopNavbar';
 import AboutMe from './components/AboutMe';
 import ProjectList from './components/ProjectList';
-import ContactCard from './components/contact_card';
+import ContactCard from './components/ContactCard';
 import Footer from './components/Footer';
 import RRTAlgorithm from './components/RrtVisualizer';
 
