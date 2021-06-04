@@ -9,7 +9,7 @@ class ProjectCard extends Component {
   render() {
     return (
       <Accordion>
-        <Card className="mt-5" bg="light" border="secondary">
+        <Card className="mt-5" bg="light" border="secondary AnimateOnScroll animate__animated animate__fadeIn">
           <Card.Img variant="top" src={this.props.image} bg="primary" fluid="true"/>
           <Card.Header className="pt-2 d-flex align-items-center">
             <Accordion.Toggle as={Button} variant="link" className="read-more-button" eventKey="0">

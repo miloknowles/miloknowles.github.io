@@ -12,7 +12,7 @@ class ContactCard extends Component {
         <Container className="pt-5 pb-5" id="contact">
           <Row>
             {/* mx-auto centers stuff! */}
-            <Card className="bg-light mx-auto text-center">
+            <Card className="bg-light mx-auto text-center AnimateOnScroll animate__animated animate__fadeIn">
               <Card.Header className="FontColorBlack">CONTACT ME</Card.Header>
                 <Card.Body>
                 <Card.Link href="milo@bluemeadow.ai">milo@bluemeadow.ai</Card.Link>
