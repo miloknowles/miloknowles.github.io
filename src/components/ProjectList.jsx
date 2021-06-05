@@ -21,21 +21,25 @@ class ProjectList extends Component {
   render() {
     return (
       <Container className="LightBackground" fluid>
-        <Container className="pt-5" id="projects"></Container>
-        <Container className="pt-5 pb-5">
+        <Container className="pt-5 pb-5" id="projects"></Container>
+        <Container className="pb-5">
           <Row>
             <Col xs={12} className="my-auto">
               <p className="FontColorDarkBlue SectionHeadingText AnimateOnScroll animate__animated animate__fadeIn">PROJECTS</p>
               <ProjectCard
                 image={'/images/icra2021.png'}
                 title={"ICRA 2021: Toward Robust and Efficient Online Adaptation for Deep Stereo Depth Estimation"}
-                description={<>Had the opportunity to present my first paper at ICRA 2021! Paper and video are linked below if you're interested.</>}
+                description={<>I had the opportunity to present my first paper at ICRA 2021! It asks and attempts to answer
+                three questions:
+                (1) How do we know when a deep stereo network is unfamiliar with the environment and needs to adapt?
+                (2) When can we stop adapting?
+                (3) How do we adapt to a novel environment without forgetting the training set?</>}
                 date={'June, 2021'}
                 links={[<CardLink href="/papers/knowles_icra2021.pdf" text="Paper" target="_blank"></CardLink>]}>
               </ProjectCard>
               <ProjectCard
                 image={'/images/thesis/epistemic_example.png'}
-                title={"Master's Thesis"}
+                title={"MIT Master's Thesis"}
                 description={<>End-to-end <i>deep stereo networks</i> have achieved state-of-the-art accuracy for
                             depth estimation, but we need to augment these systems with an understanding of uncertainty
                             to make them safe for real-world deployment. In the context of deep learning, there are
@@ -81,6 +85,7 @@ class ProjectList extends Component {
             </Col>
           </Row>
         </Container>
+        <Container className="pb-5"></Container>
       </Container>
     );
   }
