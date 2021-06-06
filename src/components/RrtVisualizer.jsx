@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as d3 from 'd3-scale-chromatic';
 
 var ALPHA = 0.5;
 
@@ -60,9 +61,10 @@ class RRTAlgorithm extends Component {
     this.state = {
       nodes: [],
       edges: [],
-      nn: [],
+      parents: [],
       width: 0,
       height: 0,
+      distanceSoFar: []
     };
   }
 
@@ -104,12 +106,14 @@ class RRTAlgorithm extends Component {
     });
     var nn_index = argMin(euclidean_dist2);
     var nn_point = this.state.nodes[nn_index];
+    var nn_dist = Math.sqrt(euclidean_dist2[nn_index]);
 
     var clipped_point = [linearInterpolate(nn_point[0], sample_point[0], ALPHA),
                          linearInterpolate(nn_point[1], sample_point[1], ALPHA)];
     this.state.nodes.push(clipped_point);
     this.state.edges.push([nn_point, clipped_point]);
-    this.state.nn.push(nn_index);
+    this.state.parents.push(nn_index);
+    this.state.distanceSoFar.push(this.state.distanceSoFar[nn_index] + nn_dist);
 
     // I think this triggers a re-render to happen.
     this.setState({
@@ -119,25 +123,6 @@ class RRTAlgorithm extends Component {
   }
 
   windowResizeCallback() {
-    // const prevWidth = this.state.width;
-
-    // let container = document.getElementById("TreeVisualizationContainer");
-    // const newWidth = container.clientWidth || document.body.clientWidth;
-
-    // var updatedNodes = [];
-    // this.state.nodes.forEach((x) => {
-    //   updatedNodes.push([x[0] * newWidth / prevWidth, x[1]]);
-    // });
-
-    // var updatedEdges = updatedNodes.map((x, i) => {
-    //   return [x, updatedNodes[this.state.nn[i]]];
-    // });
-
-    // this.setState({
-    //   nodes: updatedNodes,
-    //   edges: updatedEdges
-    // });
-
     this.updateWidthAndHeight();
   }
 
@@ -147,7 +132,8 @@ class RRTAlgorithm extends Component {
     // Start RRT off in the middle of the page.
     this.setState({
       nodes: [[this.state.width / 2, this.state.height / 2]],
-      nn: [0]
+      parents: [0],
+      distanceSoFar: [0]
     });
 
     // Set up a periodic callback to add the next RRT node.
@@ -178,12 +164,21 @@ class RRTAlgorithm extends Component {
 
   // Draw nodes and edges as SVG art.
   render() {
-    var rendered_nodes = this.state.nodes.map(node => React.createElement("circle", {
-      r: "5", fill: "black", cx: node[0] * this.state.width, cy: node[1] * this.state.height,
+    console.log(d3.interpolateInferno(0.5));
+
+    var rendered_nodes = this.state.nodes.map((node, index) => React.createElement("circle", {
+      r: "5",
+      fill: d3.interpolateInferno(0.4 * this.state.distanceSoFar[index] / this.state.width),
+      cx: node[0] * this.state.width,
+      cy: node[1] * this.state.height,
       key: "node " + node[0].toString() + " " + node[1].toString()
     }));
-    var rendered_edges = this.state.edges.map(edge => React.createElement("line", {
-      stroke: "black", x1: edge[0][0] * this.state.width, y1: edge[0][1] * this.state.height, x2: edge[1][0] * this.state.width, y2: edge[1][1] * this.state.height,
+    var rendered_edges = this.state.edges.map((edge, index) => React.createElement("line", {
+      stroke: "black",
+      x1: edge[0][0] * this.state.width,
+      y1: edge[0][1] * this.state.height,
+      x2: edge[1][0] * this.state.width,
+      y2: edge[1][1] * this.state.height,
       key: "edge " + edge[0][0].toString() + " " + edge[0][1].toString() + " " + edge[1][0].toString() + " " + edge[1][1].toString()
     }));
 
