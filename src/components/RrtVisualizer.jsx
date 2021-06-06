@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as d3 from 'd3-scale-chromatic';
 
 var ALPHA = 0.5;
 
@@ -60,9 +61,10 @@ class RRTAlgorithm extends Component {
     this.state = {
       nodes: [],
       edges: [],
-      nn: [],
+      parents: [],
       width: 0,
       height: 0,
+      distanceSoFar: []
     };
   }
 
@@ -83,9 +85,9 @@ class RRTAlgorithm extends Component {
   }
 
   sampleFreeSpace() {
-    var x = [Math.random() * this.state.width, Math.random() * this.state.height];
+    var x = [Math.random(), Math.random()];
     while (this.checkCollision(x)) {
-      x = [Math.random() * this.state.width, Math.random() * this.state.height];
+      x = [Math.random(), Math.random()];
     }
     return x;
   }
@@ -98,14 +100,20 @@ class RRTAlgorithm extends Component {
 
     var sample_point = this.sampleFreeSpace();
 
-    var euclidean_dist2 = this.state.nodes.map((x) => { return Math.pow(x[0] - sample_point[0], 2) + Math.pow(x[1] - sample_point[1], 2); });
+    var euclidean_dist2 = this.state.nodes.map((x) => {
+      return Math.pow((x[0] - sample_point[0]) * this.state.width, 2) +
+             Math.pow((x[1] - sample_point[1]) * this.state.height, 2);
+    });
     var nn_index = argMin(euclidean_dist2);
     var nn_point = this.state.nodes[nn_index];
+    var nn_dist = Math.sqrt(euclidean_dist2[nn_index]);
 
-    var clipped_point = [linearInterpolate(nn_point[0], sample_point[0], ALPHA), linearInterpolate(nn_point[1], sample_point[1], ALPHA)];
+    var clipped_point = [linearInterpolate(nn_point[0], sample_point[0], ALPHA),
+                         linearInterpolate(nn_point[1], sample_point[1], ALPHA)];
     this.state.nodes.push(clipped_point);
     this.state.edges.push([nn_point, clipped_point]);
-    this.state.nn.push(nn_index);
+    this.state.parents.push(nn_index);
+    this.state.distanceSoFar.push(this.state.distanceSoFar[nn_index] + nn_dist);
 
     // I think this triggers a re-render to happen.
     this.setState({
@@ -115,23 +123,6 @@ class RRTAlgorithm extends Component {
   }
 
   windowResizeCallback() {
-    const prevWidth = this.state.width;
-    const newWidth = window.innerWidth || document.body.clientWidth;
-
-    var updatedNodes = [];
-    this.state.nodes.forEach((x) => {
-      updatedNodes.push([x[0] * newWidth / prevWidth, x[1]]);
-    });
-
-    var updatedEdges = updatedNodes.map((x, i) => {
-      return [x, updatedNodes[this.state.nn[i]]];
-    });
-
-    this.setState({
-      nodes: updatedNodes,
-      edges: updatedEdges
-    });
-
     this.updateWidthAndHeight();
   }
 
@@ -141,7 +132,8 @@ class RRTAlgorithm extends Component {
     // Start RRT off in the middle of the page.
     this.setState({
       nodes: [[this.state.width / 2, this.state.height / 2]],
-      nn: [0]
+      parents: [0],
+      distanceSoFar: [0]
     });
 
     // Set up a periodic callback to add the next RRT node.
@@ -153,34 +145,44 @@ class RRTAlgorithm extends Component {
 
   updateWidthAndHeight() {
     // https://stackoverflow.com/questions/2474009/browser-size-width-and-height/2474211
-    console.log(mobileCheck() ? "Detected mobile device" : "Detected non-mobile device");
+    console.log(mobileCheck() ? "[RRT] Detected mobile device" : "[RRT] Detected non-mobile device");
 
     // On mobile, RRT takes up the entire initial viewport. On desktop, only use a section.
     const pageHeight = window.innerHeight || document.body.clientHeight;
-    const rrtBoxHeight = mobileCheck() ? pageHeight : 0.4 * pageHeight;
+    const rrtBoxHeight = mobileCheck() ? pageHeight : 0.5 * pageHeight;
 
     // Only update the height when the page loads (indicated by a zero initial value).
     // This avoids the RRT box jumping in side when you scroll down on mobile and the toolsbars
     // disappear, making the viewport height bigger.
+    let container = document.getElementById("TreeVisualizationContainer");
     this.setState({
-      width: window.innerWidth || document.body.clientWidth,
+      width: container.clientWidth || document.body.clientWidth,
       height: (this.state.height <= 0) ? rrtBoxHeight : this.state.height
     });
   }
 
   // Draw nodes and edges as SVG art.
   render() {
-    var rendered_nodes = this.state.nodes.map(node => React.createElement("circle", {
-      r: "5", fill: "black", cx: node[0], cy: node[1],
+    // Spectral, Turbo, Inferno all look nice.
+    // https://github.com/d3/d3-scale-chromatic
+    var rendered_nodes = this.state.nodes.map((node, index) => React.createElement("circle", {
+      r: "5",
+      fill: d3.interpolateTurbo(0.4 * this.state.distanceSoFar[index] / this.state.width),
+      cx: node[0] * this.state.width,
+      cy: node[1] * this.state.height,
       key: "node " + node[0].toString() + " " + node[1].toString()
     }));
-    var rendered_edges = this.state.edges.map(edge => React.createElement("line", {
-      stroke: "black", x1: edge[0][0], y1: edge[0][1], x2: edge[1][0], y2: edge[1][1],
+    var rendered_edges = this.state.edges.map((edge, index) => React.createElement("line", {
+      stroke: "black",
+      x1: edge[0][0] * this.state.width,
+      y1: edge[0][1] * this.state.height,
+      x2: edge[1][0] * this.state.width,
+      y2: edge[1][1] * this.state.height,
       key: "edge " + edge[0][0].toString() + " " + edge[0][1].toString() + " " + edge[1][0].toString() + " " + edge[1][1].toString()
     }));
 
     return React.createElement("svg",
-      { className: "RRT-SVG-BOX", width: this.state.width, height: this.state.height },
+      { className: "TreeVisualizationBox", width: this.state.width, height: this.state.height },
       rendered_nodes, rendered_edges
     );
   }

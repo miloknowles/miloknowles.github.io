@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-
 import Container from 'react-bootstrap/Container';
-import { Row, Col } from 'react-bootstrap';
 
 import './css/style.css';
 import './css/text.css';
 
 import TopNavbar from './components/TopNavbar';
+import ResponsiveHello from './components/ResponsiveHello';
 import AboutMe from './components/AboutMe';
 import ProjectList from './components/ProjectList';
-import ContactCard from './components/ContactCard';
+// import ContactCard from './components/ContactCard';
 import Footer from './components/Footer';
 import RRTAlgorithm from './components/RrtVisualizer';
 
@@ -18,31 +17,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <TopNavbar></TopNavbar>
-        <Container id="RRT-Container" className="LightBackground" fluid>
-          <RRTAlgorithm></RRTAlgorithm>
-          <Container>
-            <Row>
-              {/* https://stackoverflow.com/questions/35077631/how-to-hide-one-column-from-grid-in-bootstrap-mobile-version */}
-              <Col xs={12} md={12} className="d-none d-md-block d-lg-block d-xl-block">
-                <p className=" text-center align-middle FontColorDarkBlue AnimateOnScroll animate__animated animate__fadeIn">
-                HI, MY NAME IS MILO. WELCOME TO MY PORTFOLIO!</p>
-              </Col>
-              <Col xs={12} className="d-block d-md-none d-lg-none d-xl-none">
-                <p className="text-center align-middle FontColorDarkBlue AnimateOnScroll animate__animated animate__fadeIn">
-                HI, MY NAME IS MILO.</p>
-              </Col>
-              <Col xs={12} className="d-block d-md-none d-lg-none d-xl-none">
-                <p className="text-center align-middle FontColorDarkBlue AnimateOnScroll animate__animated animate__fadeIn">
-                WELCOME TO MY PORTFOLIO!</p>
-              </Col>
-            </Row>
-          </Container>
+        <TopNavbar/>
+        <Container id="TreeVisualizationContainer" className="LightBackground" fluid>
+          <RRTAlgorithm/>
         </Container>
-        <AboutMe></AboutMe>
-        <ProjectList></ProjectList>
-        <ContactCard></ContactCard>
-        <Footer></Footer>
+        <ResponsiveHello/>
+        <AboutMe/>
+        <ProjectList/>
+        {/* <ContactCard/> */}
+        <Footer/>
       </div>
     );
   }

@@ -18,7 +18,7 @@ class TopNavbar extends Component {
           </Nav>
           <Nav>
             <Nav.Link href="/images/resume.pdf" target="_blank" >RESUME</Nav.Link>
-            <Nav.Link href="https://github.com/miloknowles" target="_blank" className="FontStyleCode">GITHUB</Nav.Link>
+            <Nav.Link href="https://github.com/miloknowles" target="_blank">GITHUB</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

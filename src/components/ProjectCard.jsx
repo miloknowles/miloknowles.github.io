@@ -35,7 +35,7 @@ class ProjectCard extends Component {
           </Card.Header>
           <Accordion.Collapse eventKey="0">
             <Card.Body>
-              <Card.Text>
+              <Card.Text className="FontReadable">
                 {this.props.description}
               </Card.Text>
               {this.props.links}

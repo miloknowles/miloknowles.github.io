@@ -2,8 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 h1, h2, h3, h4, h5, h6, p {
-  font-weight: 100;
-  line-height: 1.6em;
+  line-height: 1.7em;
 }
 
 body {
@@ -16,16 +15,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.FontReadable {
-  font-family: 'Roboto', sans-serif;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.FontStyleCode {
-  font-family: 'Roboto Mono', monospace;
+.FontReadable {
+  font-family: 'Roboto', sans-serif;
+}
+
+.FontMonospace {
+  font-family: 'Roboto Mono', 'monospace';
 }
 
 .FontColorBlack {
@@ -52,11 +51,15 @@ code {
   font-family: "Roboto";
 }
 
+.HelloText {
+  font-size: 14px;
+}
+
 .SectionHeadingText {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 800;
 }
 
 .text-small {
-  font-size: 10px;
+  font-size: 12px;
 }
