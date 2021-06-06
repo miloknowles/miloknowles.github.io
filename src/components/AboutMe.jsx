@@ -20,7 +20,7 @@ class AboutMe extends Component {
               <Image src="/images/me.jpeg" className="AnimateOnScroll animate__animated animate__fadeIn" rounded fluid></Image>
             </Col>
             <Col xs={12} lg={6} className="my-auto">
-              <p className="mt-2 pt-3 SectionHeadingText FontColorDarkBlue AnimateOnScroll animate__animated animate__fadeIn">ABOUT ME</p>
+              <p className="mt-2 pt-3 SectionHeadingText FontColorDarkBlue AnimateOnScroll animate__animated animate__fadeIn animate__slow">ABOUT ME</p>
               <p className="mt-2 FontReadable FontColorBlack AnimateOnScroll animate__animated animate__fadeIn animate__slow">
                 I'm a software engineer living in Cambridge, MA. During my time MIT,
                 my research focused on camera-based perception, mapping, and state estimation for autonomous robots.

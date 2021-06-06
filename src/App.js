@@ -8,7 +8,7 @@ import TopNavbar from './components/TopNavbar';
 import ResponsiveHello from './components/ResponsiveHello';
 import AboutMe from './components/AboutMe';
 import ProjectList from './components/ProjectList';
-import ContactCard from './components/ContactCard';
+// import ContactCard from './components/ContactCard';
 import Footer from './components/Footer';
 import RRTAlgorithm from './components/RrtVisualizer';
 
@@ -18,13 +18,13 @@ class App extends Component {
     return (
       <div className="App">
         <TopNavbar/>
-        <Container id="RRT-Container" className="LightBackground" fluid>
+        <Container id="TreeVisualizationContainer" className="LightBackground" fluid>
           <RRTAlgorithm/>
         </Container>
         <ResponsiveHello/>
         <AboutMe/>
         <ProjectList/>
-        <ContactCard/>
+        {/* <ContactCard/> */}
         <Footer/>
       </div>
     );

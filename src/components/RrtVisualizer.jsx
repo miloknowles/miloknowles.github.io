@@ -83,9 +83,9 @@ class RRTAlgorithm extends Component {
   }
 
   sampleFreeSpace() {
-    var x = [Math.random() * this.state.width, Math.random() * this.state.height];
+    var x = [Math.random(), Math.random()];
     while (this.checkCollision(x)) {
-      x = [Math.random() * this.state.width, Math.random() * this.state.height];
+      x = [Math.random(), Math.random()];
     }
     return x;
   }
@@ -98,11 +98,15 @@ class RRTAlgorithm extends Component {
 
     var sample_point = this.sampleFreeSpace();
 
-    var euclidean_dist2 = this.state.nodes.map((x) => { return Math.pow(x[0] - sample_point[0], 2) + Math.pow(x[1] - sample_point[1], 2); });
+    var euclidean_dist2 = this.state.nodes.map((x) => {
+      return Math.pow((x[0] - sample_point[0]) * this.state.width, 2) +
+             Math.pow((x[1] - sample_point[1]) * this.state.height, 2);
+    });
     var nn_index = argMin(euclidean_dist2);
     var nn_point = this.state.nodes[nn_index];
 
-    var clipped_point = [linearInterpolate(nn_point[0], sample_point[0], ALPHA), linearInterpolate(nn_point[1], sample_point[1], ALPHA)];
+    var clipped_point = [linearInterpolate(nn_point[0], sample_point[0], ALPHA),
+                         linearInterpolate(nn_point[1], sample_point[1], ALPHA)];
     this.state.nodes.push(clipped_point);
     this.state.edges.push([nn_point, clipped_point]);
     this.state.nn.push(nn_index);
@@ -115,22 +119,24 @@ class RRTAlgorithm extends Component {
   }
 
   windowResizeCallback() {
-    const prevWidth = this.state.width;
-    const newWidth = window.innerWidth || document.body.clientWidth;
+    // const prevWidth = this.state.width;
 
-    var updatedNodes = [];
-    this.state.nodes.forEach((x) => {
-      updatedNodes.push([x[0] * newWidth / prevWidth, x[1]]);
-    });
+    // let container = document.getElementById("TreeVisualizationContainer");
+    // const newWidth = container.clientWidth || document.body.clientWidth;
 
-    var updatedEdges = updatedNodes.map((x, i) => {
-      return [x, updatedNodes[this.state.nn[i]]];
-    });
+    // var updatedNodes = [];
+    // this.state.nodes.forEach((x) => {
+    //   updatedNodes.push([x[0] * newWidth / prevWidth, x[1]]);
+    // });
 
-    this.setState({
-      nodes: updatedNodes,
-      edges: updatedEdges
-    });
+    // var updatedEdges = updatedNodes.map((x, i) => {
+    //   return [x, updatedNodes[this.state.nn[i]]];
+    // });
+
+    // this.setState({
+    //   nodes: updatedNodes,
+    //   edges: updatedEdges
+    // });
 
     this.updateWidthAndHeight();
   }
@@ -153,17 +159,19 @@ class RRTAlgorithm extends Component {
 
   updateWidthAndHeight() {
     // https://stackoverflow.com/questions/2474009/browser-size-width-and-height/2474211
-    console.log(mobileCheck() ? "Detected mobile device" : "Detected non-mobile device");
+    console.log(mobileCheck() ? "[RRT] Detected mobile device" : "Detected non-mobile device");
 
     // On mobile, RRT takes up the entire initial viewport. On desktop, only use a section.
     const pageHeight = window.innerHeight || document.body.clientHeight;
-    const rrtBoxHeight = mobileCheck() ? pageHeight : 0.4 * pageHeight;
+    const rrtBoxHeight = mobileCheck() ? pageHeight : 0.5 * pageHeight;
 
     // Only update the height when the page loads (indicated by a zero initial value).
     // This avoids the RRT box jumping in side when you scroll down on mobile and the toolsbars
     // disappear, making the viewport height bigger.
+    let container = document.getElementById("TreeVisualizationContainer");
+    console.log(container);
     this.setState({
-      width: window.innerWidth || document.body.clientWidth,
+      width: container.clientWidth || document.body.clientWidth,
       height: (this.state.height <= 0) ? rrtBoxHeight : this.state.height
     });
   }
@@ -171,16 +179,16 @@ class RRTAlgorithm extends Component {
   // Draw nodes and edges as SVG art.
   render() {
     var rendered_nodes = this.state.nodes.map(node => React.createElement("circle", {
-      r: "5", fill: "black", cx: node[0], cy: node[1],
+      r: "5", fill: "black", cx: node[0] * this.state.width, cy: node[1] * this.state.height,
       key: "node " + node[0].toString() + " " + node[1].toString()
     }));
     var rendered_edges = this.state.edges.map(edge => React.createElement("line", {
-      stroke: "black", x1: edge[0][0], y1: edge[0][1], x2: edge[1][0], y2: edge[1][1],
+      stroke: "black", x1: edge[0][0] * this.state.width, y1: edge[0][1] * this.state.height, x2: edge[1][0] * this.state.width, y2: edge[1][1] * this.state.height,
       key: "edge " + edge[0][0].toString() + " " + edge[0][1].toString() + " " + edge[1][0].toString() + " " + edge[1][1].toString()
     }));
 
     return React.createElement("svg",
-      { className: "RRT-SVG-BOX", width: this.state.width, height: this.state.height },
+      { className: "TreeVisualizationBox", width: this.state.width, height: this.state.height },
       rendered_nodes, rendered_edges
     );
   }

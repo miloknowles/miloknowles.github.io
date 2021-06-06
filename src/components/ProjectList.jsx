@@ -25,7 +25,7 @@ class ProjectList extends Component {
         <Container className="pb-5">
           <Row>
             <Col xs={12} className="my-auto">
-              <p className="FontColorDarkBlue SectionHeadingText AnimateOnScroll animate__animated animate__fadeIn">PROJECTS</p>
+              <p className="FontColorDarkBlue SectionHeadingText AnimateOnScroll animate__animated animate__fadeIn animate__slow">PROJECTS</p>
               <ProjectCard
                 image={'/images/icra2021.png'}
                 title={"ICRA 2021: Toward Robust and Efficient Online Adaptation for Deep Stereo Depth Estimation"}
