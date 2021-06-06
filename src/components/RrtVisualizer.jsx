@@ -155,7 +155,6 @@ class RRTAlgorithm extends Component {
     // This avoids the RRT box jumping in side when you scroll down on mobile and the toolsbars
     // disappear, making the viewport height bigger.
     let container = document.getElementById("TreeVisualizationContainer");
-    console.log(container);
     this.setState({
       width: container.clientWidth || document.body.clientWidth,
       height: (this.state.height <= 0) ? rrtBoxHeight : this.state.height
@@ -165,6 +164,7 @@ class RRTAlgorithm extends Component {
   // Draw nodes and edges as SVG art.
   render() {
     // Spectral, Turbo, Inferno all look nice.
+    // https://github.com/d3/d3-scale-chromatic
     var rendered_nodes = this.state.nodes.map((node, index) => React.createElement("circle", {
       r: "5",
       fill: d3.interpolateTurbo(0.4 * this.state.distanceSoFar[index] / this.state.width),
