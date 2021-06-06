@@ -15,15 +15,11 @@ class ContactCard extends Component {
             <Card className="bg-light mx-auto text-center AnimateOnScroll animate__animated animate__fadeIn">
               <Card.Header className="FontColorBlack">CONTACT ME</Card.Header>
                 <Card.Body>
-                <Card.Link href="milo@bluemeadow.ai">milo@bluemeadow.ai</Card.Link>
+                <Card.Link href="milo@bluemeadow.ai">milo (at) bluemeadow.ai</Card.Link>
                   <Card.Link href="https://www.linkedin.com/in/milo-knowles/"><span className="fa fa-linkedin"></span></Card.Link>
                   <Card.Link href="https://twitter.com/milo_knowles"><span className="fa fa-twitter"></span></Card.Link>
                   <Card.Link href="https://github.com/miloknowles"><span className="fa fa-github"></span></Card.Link>
-                  {/* <Card.Link className="text-nowrap" href="mknowles@mit.edu" target="_blank">MKNOWLES@MIT.EDU</Card.Link> */}
-                  {/* <Card.Link href="/images/resume.pdf" target="_blank">RESUME</Card.Link> */}
-                  {/* <Card.Link className="text-nowrap" href="https://github.com/miloknowles" target="_blank">GITHUB</Card.Link> */}
-                  {/* <Card.Link className="text-nowrap" href="https://www.linkedin.com/in/milo-knowles" target="_blank">LINKEDIN</Card.Link> */}
-                  <Card.Link className="text-nowrap" href="https://www.strava.com/athletes/6914634" target="_blank">Yep, I linked my Strava</Card.Link>
+                  <Card.Link className="text-nowrap" href="https://www.strava.com/athletes/6914634" target="_blank">Yep, Strava</Card.Link>
                 </Card.Body>
             </Card>
           </Row>

@@ -22,3 +22,14 @@
   padding-left: 0;
   padding-right: 0;
 }
+
+
+.Transparent {
+  background-color: rgba(0, 0, 0, 0);
+  /* border: 1px solid black; */
+  border: none;
+}
+
+.SocialMediaCardBody {
+  padding-left: 0;
+}
