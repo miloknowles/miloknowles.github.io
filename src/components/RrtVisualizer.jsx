@@ -145,7 +145,7 @@ class RRTAlgorithm extends Component {
 
   updateWidthAndHeight() {
     // https://stackoverflow.com/questions/2474009/browser-size-width-and-height/2474211
-    console.log(mobileCheck() ? "[RRT] Detected mobile device" : "Detected non-mobile device");
+    console.log(mobileCheck() ? "[RRT] Detected mobile device" : "[RRT] Detected non-mobile device");
 
     // On mobile, RRT takes up the entire initial viewport. On desktop, only use a section.
     const pageHeight = window.innerHeight || document.body.clientHeight;
@@ -164,11 +164,10 @@ class RRTAlgorithm extends Component {
 
   // Draw nodes and edges as SVG art.
   render() {
-    console.log(d3.interpolateInferno(0.5));
-
+    // Spectral, Turbo, Inferno all look nice.
     var rendered_nodes = this.state.nodes.map((node, index) => React.createElement("circle", {
       r: "5",
-      fill: d3.interpolateInferno(0.4 * this.state.distanceSoFar[index] / this.state.width),
+      fill: d3.interpolateTurbo(0.4 * this.state.distanceSoFar[index] / this.state.width),
       cx: node[0] * this.state.width,
       cy: node[1] * this.state.height,
       key: "node " + node[0].toString() + " " + node[1].toString()
