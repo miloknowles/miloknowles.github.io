@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3-scale-chromatic';
+import Delaunator from 'delaunator';
 
 var ALPHA = 0.5;
 
@@ -64,7 +65,8 @@ class RRTAlgorithm extends Component {
       parents: [],
       width: 0,
       height: 0,
-      distanceSoFar: []
+      distanceSoFar: [],
+      triangles: []
     };
   }
 
@@ -94,8 +96,12 @@ class RRTAlgorithm extends Component {
 
   addNewNodeRRT() {
     // Stopping condition to prevent clutter.
-    if (this.state.nodes.length > 100) {
+    const kMaxNodes = 100;
+    if (this.state.nodes.length > kMaxNodes) {
       clearInterval(this.interval);
+
+      // Trigger Delaunay triangulation.
+      // this.doTriangulation();
     }
 
     var sample_point = this.sampleFreeSpace();
@@ -122,6 +128,12 @@ class RRTAlgorithm extends Component {
     });
   }
 
+  doTriangulation() {
+    const delaunay = new Delaunator(this.state.nodes.flat());
+    console.log(delaunay.triangles);
+    this.setState({triangles: delaunay.triangles});
+  }
+
   windowResizeCallback() {
     this.updateWidthAndHeight();
   }
@@ -130,8 +142,9 @@ class RRTAlgorithm extends Component {
     this.updateWidthAndHeight();
 
     // Start RRT off in the middle of the page.
+    console.log(this.state.width, this.state.height);
     this.setState({
-      nodes: [[this.state.width / 2, this.state.height / 2]],
+      nodes: [[0.5, 0.5]],
       parents: [0],
       distanceSoFar: [0]
     });
@@ -146,15 +159,17 @@ class RRTAlgorithm extends Component {
   updateWidthAndHeight() {
     // https://stackoverflow.com/questions/2474009/browser-size-width-and-height/2474211
     console.log(mobileCheck() ? "[RRT] Detected mobile device" : "[RRT] Detected non-mobile device");
+    let container = document.getElementById("TreeVisualizationContainer");
 
     // On mobile, RRT takes up the entire initial viewport. On desktop, only use a section.
-    const pageHeight = window.innerHeight || document.body.clientHeight;
+    let maybeNavbarHeight = document.getElementById("TopNavbar").clientHeight || 0;
+    const pageHeight = document.body.clientHeight - maybeNavbarHeight;
+    console.log(document.body.clientHeight);
     const rrtBoxHeight = mobileCheck() ? pageHeight : 0.5 * pageHeight;
 
     // Only update the height when the page loads (indicated by a zero initial value).
     // This avoids the RRT box jumping in side when you scroll down on mobile and the toolsbars
     // disappear, making the viewport height bigger.
-    let container = document.getElementById("TreeVisualizationContainer");
     this.setState({
       width: container.clientWidth || document.body.clientWidth,
       height: (this.state.height <= 0) ? rrtBoxHeight : this.state.height
@@ -165,13 +180,16 @@ class RRTAlgorithm extends Component {
   render() {
     // Spectral, Turbo, Inferno all look nice.
     // https://github.com/d3/d3-scale-chromatic
+    let largestScreenDim = Math.max(this.state.width, this.state.height);
+
     var rendered_nodes = this.state.nodes.map((node, index) => React.createElement("circle", {
       r: "5",
-      fill: d3.interpolateTurbo(0.4 * this.state.distanceSoFar[index] / this.state.width),
+      fill: d3.interpolateTurbo(0.4 * this.state.distanceSoFar[index] / largestScreenDim),
       cx: node[0] * this.state.width,
       cy: node[1] * this.state.height,
       key: "node " + node[0].toString() + " " + node[1].toString()
     }));
+
     var rendered_edges = this.state.edges.map((edge, index) => React.createElement("line", {
       stroke: "black",
       x1: edge[0][0] * this.state.width,
@@ -181,10 +199,33 @@ class RRTAlgorithm extends Component {
       key: "edge " + edge[0][0].toString() + " " + edge[0][1].toString() + " " + edge[1][0].toString() + " " + edge[1][1].toString()
     }));
 
+    // var rendered_tris = [];
+
+    // for (let i = 0; i < this.state.triangles.length; i += 3) {
+    //   const t0 = this.state.triangles[i];
+    //   const t1 = this.state.triangles[i+1];
+    //   const t2 = this.state.triangles[i+2];
+
+    //   let avgDist = this.state.distanceSoFar[t0] + this.state.distanceSoFar[t1] + this.state.distanceSoFar[t2];
+
+    //   rendered_tris.push(React.createElement("polygon", {
+    //     stroke: d3.interpolateTurbo(0.333 * 0.4 * avgDist / this.state.width),
+    //     points: [this.state.nodes[t0][0] * this.state.width, this.state.nodes[t0][1] * this.state.height,
+    //              this.state.nodes[t1][0] * this.state.width, this.state.nodes[t1][1] * this.state.height,
+    //              this.state.nodes[t2][0] * this.state.width, this.state.nodes[t2][1] * this.state.height],
+    //     fill: "none"
+    //   }));
+    // }
+
+    // if (rendered_tris.length > 0) {
+    //   return React.createElement("svg",
+    //     { className: "TreeVisualizationBox", width: this.state.width, height: this.state.height },
+    //     rendered_nodes, rendered_tris);
+    // } else {
     return React.createElement("svg",
       { className: "TreeVisualizationBox", width: this.state.width, height: this.state.height },
-      rendered_nodes, rendered_edges
-    );
+      rendered_nodes, rendered_edges);
+    // }
   }
 };
 

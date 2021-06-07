@@ -7,7 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 class TopNavbar extends Component {
   render() {
     return (
-      <Navbar collapseOnSelect expand="sm" className="DarkBackground" variant="light" sticky="top">
+      <Navbar collapseOnSelect expand="sm" className="DarkBackground" variant="light" sticky="top" id="TopNavbar">
         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
