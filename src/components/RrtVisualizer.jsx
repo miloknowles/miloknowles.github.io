@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3-scale-chromatic';
-import Delaunator from 'delaunator';
+// import Delaunator from 'delaunator';
 
 var ALPHA = 0.5;
 
@@ -128,11 +128,11 @@ class RRTAlgorithm extends Component {
     });
   }
 
-  doTriangulation() {
-    const delaunay = new Delaunator(this.state.nodes.flat());
-    console.log(delaunay.triangles);
-    this.setState({triangles: delaunay.triangles});
-  }
+  // doTriangulation() {
+  //   const delaunay = new Delaunator(this.state.nodes.flat());
+  //   console.log(delaunay.triangles);
+  //   this.setState({triangles: delaunay.triangles});
+  // }
 
   windowResizeCallback() {
     this.updateWidthAndHeight();
