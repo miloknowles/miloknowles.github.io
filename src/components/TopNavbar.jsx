@@ -7,7 +7,7 @@ import Nav from 'react-bootstrap/Nav';
 class TopNavbar extends Component {
   render() {
     return (
-      <Navbar collapseOnSelect expand="sm" className="DarkBackground" variant="light" sticky="top" id="TopNavbar">
+      <Navbar className="DarkBackground" variant="light" id="TopNavbar">
         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
@@ -18,7 +18,7 @@ class TopNavbar extends Component {
           </Nav>
           <Nav>
             <Nav.Link href="/images/resume.pdf" target="_blank" >RESUME</Nav.Link>
-            <Nav.Link href="https://github.com/miloknowles" target="_blank">GITHUB</Nav.Link>
+            {/* <Nav.Link href="https://github.com/miloknowles" target="_blank">GITHUB</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
