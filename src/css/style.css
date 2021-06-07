@@ -38,3 +38,8 @@
   padding-left: 0;
   padding-right: 0;
 }
+
+.strava-icon {
+  width: 12px;
+  fill: blue;
+}
