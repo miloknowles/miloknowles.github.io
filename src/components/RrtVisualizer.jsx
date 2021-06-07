@@ -163,8 +163,7 @@ class RRTAlgorithm extends Component {
 
     // On mobile, RRT takes up the entire initial viewport. On desktop, only use a section.
     let maybeNavbarHeight = document.getElementById("TopNavbar").clientHeight || 0;
-    const pageHeight = document.body.clientHeight - maybeNavbarHeight;
-    console.log(document.body.clientHeight);
+    const pageHeight = window.innerHeight - maybeNavbarHeight;
     const rrtBoxHeight = mobileCheck() ? pageHeight : 0.5 * pageHeight;
 
     // Only update the height when the page loads (indicated by a zero initial value).

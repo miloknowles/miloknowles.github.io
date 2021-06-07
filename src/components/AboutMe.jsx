@@ -33,7 +33,7 @@ class AboutMe extends Component {
               </p>
               <Card className="SocialMediaCard AnimateOnScroll animate__animated animate__fadeIn animate__slow Transparent">
                 <Card.Body className="SocialMediaCardBody">
-                  <Card.Link href="milo@bluemeadow.ai">milo (at) bluemeadow.ai</Card.Link>
+                  <Card.Link href="milo@bluemeadow.ai" className="text-small">milo(at)bluemeadow.ai</Card.Link>
                   <Card.Link href="https://www.linkedin.com/in/milo-knowles/" target="_blank"><span className="fa fa-linkedin"></span></Card.Link>
                   <Card.Link href="https://twitter.com/milo_knowles" target="_blank"><span className="fa fa-twitter"></span></Card.Link>
                   <Card.Link href="https://github.com/miloknowles" target="_blank"><span className="fa fa-github"></span></Card.Link>
